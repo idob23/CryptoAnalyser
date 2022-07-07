@@ -1,6 +1,6 @@
 package ru.javarush.cryptoanaliser.dobrov;
 
-public class Main {
+public class Runner {
     public static void main(String[] args) {
 
 
