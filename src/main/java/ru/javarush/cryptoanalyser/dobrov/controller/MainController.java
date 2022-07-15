@@ -6,10 +6,10 @@ import ru.javarush.cryptoanalyser.dobrov.entity.ResultCode;
 import ru.javarush.cryptoanalyser.dobrov.exception.ApplicationException;
 
 public class MainController {
-    public Result execute(String command, String[] parameters) {
+    public Result execute(String command,int key) {
         try {
             Action action = Actions.find(command);
-            return action.execute(parameters);
+            return action.execute(key);
         } catch (ApplicationException e) {
             return new Result(ResultCode.ERROR, e.getMessage());
         }
