@@ -16,27 +16,34 @@ public class ConsoleRun {
         System.out.println("1. Encode.");
         System.out.println("2. Decode.");
         System.out.println("3. BruteForce.");
-        System.out.println("4. Analyse.");
+        System.out.println("4. Analyse. - не удалось пока что сделать.");
 
         firstChoice = Integer.parseInt(scanner.nextLine());
         switch (firstChoice) {
-            case 1 -> command = "encode";
-            case 2 -> command = "decode";
-            case 3 -> command = "BruteForce";
+            case 1 -> {command = "encode";
+                extracted(scanner);
+            }
+            case 2 -> {command = "decode";
+                extracted(scanner);
+            }
+            case 3 -> command = "bruteForce";
             case 4 -> command = "Analyse";
             default ->
-                System.out.println("Промахнулись, введите ещё раз: ");
+                System.out.println("Такой команды нет");
 
         }
 
+
+    }
+
+    private void extracted(Scanner scanner) {
         System.out.println("Введите ключ : ");
         try {
             key = Integer.parseInt(scanner.nextLine());
         } catch (RuntimeException e) {
-            throw new ApplicationException("Не число. Введите ещё раз : ");
+            throw new ApplicationException("Неверно введён ключ");
         }
-
-        }
+    }
 
 
     public String getCommand() {

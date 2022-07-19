@@ -15,7 +15,6 @@ import java.util.Scanner;
 public class Encoder implements Action {
     @Override
     public Result execute(int key) {
-        //TODO need dev logic encrypt
 
         String alphabet = Strings.ALPHABET;
 
@@ -31,15 +30,12 @@ public class Encoder implements Action {
                 int originalChar = reader.read();
                 char origChar = (char) originalChar;
                 if (alphabet.indexOf(originalChar) != -1) {
-                    if (origChar == '\n') {
-                        writer.write("\n");
-                    } else {
-                        int oc = origChar - 'а';
-//                        return cipher(message, 26 - (offset % 26));
-                        int encryptedChar = oc + key;
-                        char newCharacter = (char) ('а' + encryptedChar);
-                        writer.write(newCharacter);
-                    }
+
+                    int origCharIndexInAlphabet = alphabet.indexOf(origChar);
+                    int encryptedChar = (origCharIndexInAlphabet + key) % alphabet.length();
+                    char newCharacter = alphabet.charAt(encryptedChar);
+                    writer.write(newCharacter);
+
 
                 }
             }
@@ -49,7 +45,7 @@ public class Encoder implements Action {
         }
 
 
-        return new Result(ResultCode.OK, "read all bytes " + path);
+        return new Result(ResultCode.OK, "read all bytes " + encryptPath);
 
     }
 }

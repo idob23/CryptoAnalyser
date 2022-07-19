@@ -7,10 +7,10 @@ import ru.javarush.cryptoanalyser.dobrov.util.PathFinder;
 
 import java.io.*;
 
-public class Decoder implements Action{
+public class Decoder implements Action {
     @Override
     public Result execute(int key) {
-        //TODO need dev logic decrypt
+
         String alphabet = Strings.ALPHABET;
 
         String path = PathFinder.getRoot() + "encrypt.txt";
@@ -22,17 +22,18 @@ public class Decoder implements Action{
         ) {
 
             while (reader.ready()) {
-                int originalChar = reader.read();
-                char origChar = (char) originalChar;
-                if (alphabet.indexOf(originalChar) != -1) {
-                    if (origChar == '\n') {
-                        writer.write("\n");
-                    } else {
-                        int oc = origChar - 'а';
-                        int decryptedChar = oc - key;
-                        char newCharacter = (char) ('а' + decryptedChar);
-                        writer.write(newCharacter);
+                int indexOfOriginalChar = reader.read();
+                char originalChar = (char) indexOfOriginalChar;
+                if (alphabet.indexOf(indexOfOriginalChar) != -1) {
+
+                    int origCharIndexInAlphabet = alphabet.indexOf(originalChar);
+                    int decryptedIndex = (origCharIndexInAlphabet - key) % alphabet.length();
+                    if (decryptedIndex < 0) {
+                        decryptedIndex += alphabet.length();
                     }
+                    char newCharacter = alphabet.charAt(decryptedIndex);
+                    writer.write(newCharacter);
+
 
                 }
             }
@@ -42,7 +43,7 @@ public class Decoder implements Action{
         }
 
 
-        return new Result(ResultCode.OK, "read all bytes " + path);
+        return new Result(ResultCode.OK, "read all bytes " + decryptPath);
 
     }
 }

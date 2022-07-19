@@ -1,12 +1,14 @@
 package ru.javarush.cryptoanalyser.dobrov.controller;
 
 import ru.javarush.cryptoanalyser.dobrov.commands.Action;
+import ru.javarush.cryptoanalyser.dobrov.commands.BruteForce;
 import ru.javarush.cryptoanalyser.dobrov.commands.Decoder;
 import ru.javarush.cryptoanalyser.dobrov.commands.Encoder;
 
 public enum Actions {
     ENCODE(new Encoder()),
-    DECODE(new Decoder());
+    DECODE(new Decoder()),
+    BRUTEFORCE(new BruteForce());
     private final Action action;
 
 
