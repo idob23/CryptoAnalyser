@@ -7,10 +7,7 @@ import ru.javarush.cryptoanalyser.dobrov.exception.ApplicationException;
 import ru.javarush.cryptoanalyser.dobrov.util.PathFinder;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class Encoder implements Action {
     @Override
@@ -41,7 +38,7 @@ public class Encoder implements Action {
             }
 
         } catch (IOException e) {
-            throw new ArithmeticException(e.getMessage());
+            throw new ApplicationException(e.getMessage());
         }
 
 

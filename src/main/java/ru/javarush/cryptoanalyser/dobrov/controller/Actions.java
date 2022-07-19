@@ -5,6 +5,7 @@ import ru.javarush.cryptoanalyser.dobrov.commands.BruteForce;
 import ru.javarush.cryptoanalyser.dobrov.commands.Decoder;
 import ru.javarush.cryptoanalyser.dobrov.commands.Encoder;
 
+@SuppressWarnings("ALL")
 public enum Actions {
     ENCODE(new Encoder()),
     DECODE(new Decoder()),

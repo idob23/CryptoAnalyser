@@ -1,5 +1,6 @@
 package ru.javarush.cryptoanalyser.dobrov.entity;
 
+@SuppressWarnings("ALL")
 public class Result {
     private final ResultCode resultCode;
     private final String message;

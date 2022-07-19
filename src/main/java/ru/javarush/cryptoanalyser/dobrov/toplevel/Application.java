@@ -6,6 +6,7 @@ import ru.javarush.cryptoanalyser.dobrov.view.ConsoleRun;
 
 import java.util.Arrays;
 
+@SuppressWarnings("ALL")
 public class Application {
     private final ConsoleRun consoleRun;
     private final MainController mainController;
